@@ -1,0 +1,7 @@
+<h1>登录页</h1>
+<button (click)="login()" class="btn btn-success" *ngIf="!authService.isLogin">
+  登录
+</button>
+<button (click)="logout()" class="btn btn-danger" *ngIf="authService.isLogin">
+  退出
+</button>

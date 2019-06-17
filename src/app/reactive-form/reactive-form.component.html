@@ -1,0 +1,66 @@
+<!-- <div class="container">
+  <label for="">我的名字</label>
+  <input type="text" [formControl]="myname" />
+  {{ myname.value }}
+  <button type="button" class="btn btn-default" (click)="getName()">
+    订阅
+  </button>
+</div> -->
+
+<!-- <form [formGroup]="mygroup">
+  <label>
+    名字
+    <input type="text" formControlName="name" />
+  </label>
+  <label>
+    年龄
+    <input type="number" formControlName="age" />
+  </label>
+  <button type="button" class="btn btn-default" (click)="updateGroup()">
+    更新数据
+  </button>
+</form> -->
+<p>{{ stuForm.value | json }}</p>
+<p>{{ stuForm.status }}</p>
+<form [formGroup]="stuForm" (ngSubmit)="onSubmit()">
+  <label>
+    名字
+    <input type="text" formControlName="name" required />
+  </label>
+  <label>
+    年龄
+    <input type="number" formControlName="age" />
+    <div
+      *ngIf="age.invalid && (age.dirty || age.touched)"
+      class="alert alert-danger"
+    >
+      <div *ngIf="!age.errors.checkLength">
+        年龄长度不正确
+      </div>
+    </div>
+  </label>
+  <form formGroupName="score">
+    <label>
+      Math
+      <input type="number" formControlName="math" />
+    </label>
+    <label>
+      English
+      <input type="number" formControlName="English" />
+    </label>
+  </form>
+  <div formArrayName="job">
+    <button type="button" class="btn btn-success" (click)="addJob()">
+      新增工作
+    </button>
+    <div *ngFor="let item of job.controls; let i = index">
+      <label>
+        工作
+        <input type="text" [formControlName]="i" />
+      </label>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-default" [disabled]="stuForm.invalid">
+    获取表单数据
+  </button>
+</form>

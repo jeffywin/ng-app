@@ -1,0 +1,7 @@
+<div *ngIf="hero">
+    {{hero.name}}
+ <!--<div *ngIf="hero | async as hero"> -->
+    <h2>{{hero.name | uppercase}}</h2>
+    <!-- <input type="text" [(ngModel)]="hero.name"> -->
+    <button (click)="goBack(hero)">go back</button>
+</div>

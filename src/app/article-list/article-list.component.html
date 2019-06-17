@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-md-5">
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let article of articles"
+        routerLink="/article/{{ article.id }}"
+        [class.selected]="article.id === selectedId"
+        (click)="onSelect(article)"
+      >
+        <span class=" badge">{{ article.id }}</span> {{ article.name }}
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-4">
+    <router-outlet></router-outlet>
+  </div>
+</div>

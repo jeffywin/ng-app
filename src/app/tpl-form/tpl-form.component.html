@@ -1,0 +1,73 @@
+<div [hidden]="submit">
+  <div class="container col-md-5">
+    <h1>模板驱动表单</h1>
+    {{ tcContent }}
+    <form #tcForm="ngForm">
+      <div class="formGroup">
+        <label for="name">姓名</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          [ngModel]="tc.name"
+          name="name"
+          #name="ngModel"
+          #tcname
+          required
+        />
+        {{ tcname.className }}
+        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+          姓名不合法
+        </div>
+      </div>
+      <div class="formGroup">
+        <label for="age">年龄</label>
+        <input
+          type="number"
+          class="form-control"
+          id="age"
+          [ngModel]="tc.age"
+          name="age"
+          required
+          checkLength="^[1-9]\d{0,2}$"
+        />
+      </div>
+      <div class="formGroup">
+        <label for="auth">权限</label>
+        <input
+          required
+          type="text"
+          class="form-control"
+          id="auth"
+          [ngModel]="tc.auth"
+          name="auth"
+        />
+      </div>
+      <div class="formGroup">
+        <label for="job">职业</label>
+        <select class="form-control" [ngModel]="tc.job" name="job">
+          <option *ngFor="let item of jobs" [value]="item">{{ item }}</option>
+        </select>
+      </div>
+    </form>
+    <button class="btn btn-default" (click)="onSubmit()">提交</button>
+    <button class="btn btn-default" (click)="add(); tcForm.reset()">
+      新增
+    </button>
+  </div>
+</div>
+
+<div class="container" [hidden]="!submit">
+  <div class="row">
+    <div class="fromGroup">
+      {{ tc.name }}
+    </div>
+    <div class="fromGroup">
+      {{ tc.age }}
+    </div>
+    <div class="fromGroup">
+      {{ tc.job }}
+    </div>
+  </div>
+  <button (click)="submit = false">返回</button>
+</div>

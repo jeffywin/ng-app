@@ -1,0 +1,10 @@
+<div *ngIf="article">
+  <h3>{{ editName }}</h3>
+  <div><span>id:</span>{{ article.id }}</div>
+  <div>
+    <span>name:</span>
+    {{ article.name }}
+    <input type="text" class="form-control" [(ngModel)]="editName" />
+  </div>
+  <button (click)="save()">保存</button><button (click)="cancle()">退出</button>
+</div>
