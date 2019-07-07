@@ -16,7 +16,12 @@ import { LoginComponent } from "./login/login.component";
 import { ArticleModule } from "./article/article.module";
 import { TplFormModule } from "./tpl-form/tpl-form.module";
 import { ReactiveFormModule } from "./reactive-form/reactive-form.module";
-
+import { NgZorroAntdModule, NZ_I18N, zh_CN } from "ng-zorro-antd";
+import zh from "@angular/common/locales/zh";
+import { registerLocaleData } from "@angular/common";
+registerLocaleData(zh);
+import { TableComponent } from "./table/table.component";
+// import { TableDetailComponent } from "./table-detail/table-detail.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +29,8 @@ import { ReactiveFormModule } from "./reactive-form/reactive-form.module";
     // HeroDetailComponent,
     DashborardComponent,
     LoginComponent
+    // TableComponent
+    // TableDetailComponent
   ],
   imports: [
     ReactiveFormModule,
@@ -37,9 +44,10 @@ import { ReactiveFormModule } from "./reactive-form/reactive-form.module";
     HerosModule,
     HeroDetailModule,
     AdminModule,
-    NewsModule
+    NewsModule,
+    NgZorroAntdModule
   ],
-  providers: [],
+  providers: [{ provide: NZ_I18N, useValue: zh_CN }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
